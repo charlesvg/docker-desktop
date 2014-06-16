@@ -6,7 +6,7 @@ RUN apt-get update
 # Set the env variable DEBIAN_FRONTEND to noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 
-# Installing fuse package (libreoffice-java dependency) and it's going to try to create
+# Installing fuse package (dependency) and it's going to try to create
 # a fuse device without success, due the container permissions. || : help us to ignore it. 
 # Then we are going to delete the postinst fuse file and try to install it again!
 # Thanks Jerome for helping me with this workaround solution! :)
