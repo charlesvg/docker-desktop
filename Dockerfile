@@ -7,7 +7,7 @@ RUN apt-get update
 ENV DEBIAN_FRONTEND noninteractive
 
 # Installing the environment required: xserver, xdm, flux box, roc-filer and ssh
-RUN apt-get install -y xpra ssh pwgen xserver-xephyr xdm fluxbox sudo
+RUN apt-get install -y xpra openssh-server pwgen xserver-xephyr xdm fluxbox sudo
 
 # Install XRDP dependencies
 RUN apt-get install -y nano vnc4server autoconf automake libtool libssl-dev libpam0g-dev libx11-dev libxfixes-dev git gcc pkg-config
