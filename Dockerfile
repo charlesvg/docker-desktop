@@ -12,6 +12,8 @@ RUN apt-get install -y ssh pwgen xserver-xephyr xdm fluxbox sudo
 # Install XRDP dependencies
 RUN apt-get install -y nano vnc4server autoconf automake libtool libssl-dev libpam0g-dev libx11-dev libxfixes-dev git gcc pkg-config
 
+RUN ln -s /usr/bin/Xorg /usr/bin/X
+
 # Upstart and DBus have issues inside docker. We work around in order to install firefox.
 RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
 
