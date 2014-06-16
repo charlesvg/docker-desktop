@@ -15,6 +15,9 @@ RUN apt-get -y install fuse  || :
 RUN rm -rf /var/lib/dpkg/info/fuse.postinst
 RUN apt-get -y install fuse
 
+# Upstart and DBus have issues inside docker. We work around in order to install firefox.
+RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
+
 # Installing the environment required: xserver, xdm, flux box, roc-filer and ssh
 RUN apt-get install -y xpra openssh-server pwgen xserver-xephyr xdm fluxbox sudo
 
@@ -23,8 +26,7 @@ RUN apt-get install -y nano vnc4server autoconf automake libtool libssl-dev libp
 
 RUN ln -s /usr/bin/Xorg /usr/bin/X
 
-# Upstart and DBus have issues inside docker. We work around in order to install firefox.
-RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
+
 
 
 
