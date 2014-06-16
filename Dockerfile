@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y ssh pwgen xserver-xephyr xdm fluxbox sudo
 
 # Install XRDP dependencies
-RUN apt-get install -y nano vnc4server autoconf automake libtool libssl-dev libpam0g-dev libx11-dev libxfixes-dev git gcc
+RUN apt-get install -y nano vnc4server autoconf automake libtool libssl-dev libpam0g-dev libx11-dev libxfixes-dev git gcc pkg-config
 
 # Upstart and DBus have issues inside docker. We work around in order to install firefox.
 RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
@@ -37,4 +37,6 @@ EXPOSE 22
 EXPOSE 3389
 
 # Start xdm and ssh services.
+CMD ["/bin/bash", "/src/install-xrdp.sh"]
+
 CMD ["/bin/bash", "/src/startup.sh"]
