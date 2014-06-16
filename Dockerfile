@@ -1,4 +1,4 @@
-FROM ubuntu:12.10
+FROM ubuntu:14.04
 MAINTAINER CharlesVG
 
 RUN apt-get update
